@@ -1,19 +1,8 @@
 import * as React from 'react'
-import {
-    useStaticQuery,
-    graphql
-  } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
-const BlogPage = () => {
-    const data = useStaticQuery(graphql`
-    query {
-      allFile {
-        nodes {
-          name
-        }
-      }
-    }`)
+const BlogPage = ({data}) => {
     return (
         <Layout pageTitle="My Blog Posts">
           <ul>
@@ -28,5 +17,15 @@ const BlogPage = () => {
         </Layout>
     )
 }
+
+export const query=graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`
 
 export default BlogPage
